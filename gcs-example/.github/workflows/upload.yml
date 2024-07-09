@@ -1,0 +1,39 @@
+on: push
+
+jobs:
+  upload:
+    name: Upload
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authorize with Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.SERVICE_ACCOUNT_EMAIL }}
+
+      - name: Setup gcloud command
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: '>= 482.0.0'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload dist files
+        # push eventのgithub.ref_nameはpushされたbranch名
+        # https://dev.classmethod.jp/articles/how-to-get-a-ref-branch-within-a-workflow-execution-in-github-actions/
+        run: "gsutil -m rsync -d -r ./dist gs://${{ vars.BUCKET_NAME }}/${{ github.ref_name }}"
