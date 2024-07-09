@@ -1,4 +1,4 @@
-# view-project-examples
+# view-project-boilerplates
 
 * BaseMachinaのビューのプロジェクト構成例を集めたリポジトリです。
 * 例えば、ビューのコードをTSX / JSXで記述し、複数ファイルからバンドルした結果をGCSにアップロードするといったサンプルが含まれています。

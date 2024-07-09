@@ -1,4 +1,4 @@
-# gcs-example
+# gcs-boilerplate
 
 - ビューのソースコードを GitHub で管理し、GCS にデプロイするサンプルです。
 - ソースコードは JSX / TSX で記述し、ファイルを分割することもできます。
