@@ -4,6 +4,10 @@
 - ソースコードは JSX / TSX で記述し、ファイルを分割することもできます。
   - ※`@basemachina/view` package の型定義の配布は現状行っていません。
 
+## 動作確認環境
+
+macOSおよびLinux (Ubuntu)のNode.js v20での動作を確認しています。
+
 ## 使い方
 
 ### 事前準備を行う
