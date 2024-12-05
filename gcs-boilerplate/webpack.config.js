@@ -48,14 +48,13 @@ export default {
   },
   // ビューで使用できるライブラリはバンドルしない
   externals: {
-    react: "react",
-    formik: "formik",
-    dayjs: "dayjs",
     "@basemachina/view": "@basemachina/view",
+    react: "react",
+    dayjs: "dayjs",
     "@chakra-ui/react": "@chakra-ui/react",
-    "react-chartjs-2": "react-chartjs-2",
     "@chakra-ui/react@2": "@chakra-ui/react@2",
-    "encoding-japanese": "encoding-japanese",
+    "react-chartjs-2": "react-chartjs-2",
+    "react-chartjs-2@5": "react-chartjs-2@5",
   },
   mode: "production",
 };
