@@ -2,7 +2,6 @@
 
 - ビューのソースコードを GitHub で管理し、GCS にデプロイするサンプルです。
 - ソースコードは JSX / TSX で記述し、ファイルを分割することもできます。
-  - ※`@basemachina/view` package の型定義の配布は現状行っていません。
 
 ## 動作確認環境
 
@@ -126,3 +125,18 @@ const environmentId = "<environmentId>";
 と言うパスにアップロードされるイメージとなります。
 
 `gsutil rsync` を使っているので、削除されたファイルがあった場合はGCS上からも削除されます。
+
+### ベースマキナ組み込みライブラリの型検査
+
+* 現状、 `@basemachina/view` package の型定義の配布は行っていないため、importした値の型がanyとなります。
+* `@chakra-ui/react` などの[ベースマキナ組み込みの外部ライブラリ](https://docs.basemachina.com/view/external_libs/#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AA%E5%A4%96%E9%83%A8%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E4%B8%80%E8%A6%A7)は、 `webpack.config.json` にてバンドルから除外されています。そのため、通常通りdevDependenciesに追加していただくことで型検査をご利用いただけます。
+  - ドキュメントに記載のものは初期時点で `package.json` に追加済みとなります。
+
+`@chakra-ui/react@2` や、`react-chartjs-2@5`といった、ベースマキナで有効なバージョン固定の依存を使用したい場合は、`tsconfig.json`のcompilerOptionsに以下の設定を追加してください。
+
+```js
+"paths": {
+  "@chakra-ui/react@2": ["./node_modules/@chakra-ui/react"],
+  "react-chartjs-2@5": ["./node_modules/react-chartjs-2"],
+}
+```
