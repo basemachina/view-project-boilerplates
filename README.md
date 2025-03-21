@@ -6,8 +6,7 @@
 
 ## 使用方法
 
-* ボイラープレートのディレクトリをコピーし、名前を付ける
-* 各ディレクトリ内のREADMEに記載された内容に従って設定を行う
+`npx @basemachina/view-boilerplate init`
 
 ## License
 
