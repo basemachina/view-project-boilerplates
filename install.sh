@@ -38,7 +38,7 @@ download_template() {
   # テンプレートディレクトリが存在するか確認
   if [ ! -d "$extracted_dir/templates/$template" ]; then
     echo "エラー: テンプレート '$template' が見つかりません"
-    # rm -rf "$temp_dir"
+    rm -rf "$temp_dir"
     exit 1
   fi
   
